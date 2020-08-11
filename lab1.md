@@ -12,13 +12,16 @@
 * Первоначально в Vagrant была сконфигурирована виртуалка с убунтой и уже внутри неё снова развернут вагрант и пэкер, чтобы все работы провести в единой среде Linux. Но внутренняя виртуалка не запустилась, т.к. на этом уровне не доступна виртуализация. После этого все было проделано на Windows
 
 * Во время попыток билда была ошибка при выполнении скрипта **vagrant.ks** добавлениия УЗ vagrant в sudoers: 
-``` # Add vagrant to sudoers
+```
+# Add vagrant to sudoers
 cat > /etc/sudoers.d/vagrant << EOF_sudoers_vagrant
 vagrant        ALL=(ALL)       NOPASSWD: ALL
 EOF_sudoers_vagrant 
 ``` 
 После замены на этот код
-``` echo -e "vagrant        ALL=(ALL)       NOPASSWD: ALL\n" | sudo tee --append /etc/sudoers.d/vagrant 
+``` 
+# Add vagrant to sudoers
+echo -e "vagrant        ALL=(ALL)       NOPASSWD: ALL\n" | sudo tee --append /etc/sudoers.d/vagrant 
 ``` 
 процесс запустился.
 
@@ -26,7 +29,7 @@ EOF_sudoers_vagrant
 
 ## Результат работы
 
-* В репозиторий Vagrant cloud добавлен билд с обновлённым ядром версии ** 5.8.0-1.el7.elrepo.x86_64 ** по адресу https://app.vagrantup.com/fmeat/boxes/centos-7-555
+* В репозиторий Vagrant cloud добавлен билд с обновлённым ядром версии **5.8.0-1.el7.elrepo.x86_64** по адресу https://app.vagrantup.com/fmeat/boxes/centos-7-555
 * В репозиторий GitHUB добавлено описание лабораторной работы, оформленной в разметке **Markdown** по адресу https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab1.md
 
 
