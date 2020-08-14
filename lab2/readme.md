@@ -8,7 +8,7 @@
 
 ## Результат работы
 
-* В репозиторий GitHUB добавлен bash скрипт ([mkRaid.sh](https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab2/mkRaid.sh)) создания рэйда, конф для автосборки рейда при загрузке ([mdadm.conf](https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab2/mdmadm.conf)) и изменённый [Vagrant файл](https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab2/Vagrant),  который собирает рэйд массив 5 при первом запуске.
+* В репозиторий GitHUB добавлен bash скрипт ([mkRaid.sh](https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab2/mkRaid.sh)) создания рэйда, конф для автосборки рейда при загрузке ([mdadm.conf](https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab2/mdmadm.conf)) и изменённый [Vagrant файл](https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab2/Vagrantfile),  который собирает рэйд массив 5 при первом запуске.
 
  
 
