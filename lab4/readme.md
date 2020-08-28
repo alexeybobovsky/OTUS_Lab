@@ -1,15 +1,17 @@
-# Лабораторная работа №2.  Дисковая подсистема 
+# Лабораторная работа №4.  NFS, FUSE 
  
-## Ход выполнения и возникшие проблемы
-
-* Команда из методички, зануляющая суперблоки  `mdadm --zero-superblock --force /dev/sd{b,c,d,e,f}` завершается с ошибкой. Как выяснилось - это нормальное поведение системы если рэйд собирается впервые и **mdadm** про него ничего не знает.
-* В команде из методички по созданию рэйда `mdadm --create --verbose /dev/md0 -l 6 -n 5/dev/sd{b,c,d,e,f}` допущена синтаксическая ошибка - пропущен пробел. После итоговая команда приведена к следующему виду: `mdadm --create --verbose /dev/md0 -l 6 -n 5 /dev/sd{b,c,d,e,f}`
 
 
 ## Результат работы
 
-* В репозиторий GitHUB добавлен bash скрипт ([mkRaid.sh](https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab2/mkRaid.sh)) создания рэйда, конф для автосборки рейда при загрузке ([mdadm.conf](https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab2/mdmadm.conf)) и изменённый [Vagrant файл](https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab2/Vagrantfile),  который собирает рэйд массив 5 при первом запуске.
-
- 
-
+* В репозиторий [GitHUB] добавлен [Vagrant файл](https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab4/Vagrantfile),  который собирает стенд для NFS из двух виртуалок и последовательно 
+  запускает скрипты для провиженнинга   ([nfss_script.sh](https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab4/nfss_script.sh)) и ([nfsс_script.sh](https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab4/nfsс_script.sh)) соответственно. 
+  В резальтате получаем требуемый стенд 
+```
+  * vagrant up должен поднимать 2 виртуалки: сервер и клиент 
+  * на сервер должна быть расшарена директория
+  * на клиента она должна автоматически монтироваться при старте (fstab)
+  * в шаре должна быть папка upload с правами на запись
+  * - требования для NFS: NFSv3 по UDP, включенный firewall  
+```
 
