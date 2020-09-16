@@ -1,0 +1,1202 @@
+Script started on Fri 11 Sep 2020 04:49:16 AM UTC                                                                                                                    
+[vagrant@ZFS ~]$ sudo su                                                                                                                                             
+[root@ZFS vagrant]# yum install -y yum-utils                                                                                                                         
+Loaded plugins: fastestmirror                                                                                                                                        
+Loading mirror speeds from cached hostfile                                                                                                                           
+ * base: mirror.truenetwork.ru                                                                                                                                       
+ * extras: mirror.truenetwork.ru                                                                                                                                     
+ * updates: mirror.truenetwork.ru                                                                                                                                    
+Resolving Dependencies                                                                                                                                               
+--> Running transaction check                                                                                                                                        
+---> Package yum-utils.noarch 0:1.1.31-45.el7 will be updated                                                                                                        
+---> Package yum-utils.noarch 0:1.1.31-54.el7_8 will be an update                                                                                                    
+--> Finished Dependency Resolution                                                                                                                                   
+                                                                                                                                                                     
+Dependencies Resolved                                                                                                                                                
+                                                                                                                                                                     
+===================================================================================================================================================================  
+ Package                               Arch                               Version                                        Repository                           Size   
+===================================================================================================================================================================  
+Updating:                                                                                                                                                            
+ yum-utils                             noarch                             1.1.31-54.el7_8                                updates                             122 k   
+                                                                                                                                                                     
+Transaction Summary                                                                                                                                                  
+===================================================================================================================================================================  
+Upgrade  1 Package                                                                                                                                                   
+                                                                                                                                                                     
+Total download size: 122 k                                                                                                                                           
+Downloading packages:                                                                                                                                                
+No Presto metadata available for updates                                                                                                                             
+yum-utils-1.1.31-54.el7_8.noarch.rpm                                                                                                        | 122 kB  00:00:00       
+Running transaction check                                                                                                                                            
+Running transaction test                                                                                                                                             
+Transaction test succeeded                                                                                                                                           
+Running transaction                                                                                                                                                  
+  Updating   : yum-utils-1.1.31-54.el7_8.noarch [###############                                                                                             ] 1/2   
+  Updating   : yum-utils-1.1.31-54.el7_8.noarch [#############################                                                                               ] 1/2   
+  Updating   : yum-utils-1.1.31-54.el7_8.noarch [#################################################################                                           ] 1/2   
+  Updating   : yum-utils-1.1.31-54.el7_8.noarch [#################################################################################                           ] 1/2   
+  Updating   : yum-utils-1.1.31-54.el7_8.noarch [#################################################################################################           ] 1/2   
+  Updating   : yum-utils-1.1.31-54.el7_8.noarch [######################################################################################################      ] 1/2   
+  Updating   : yum-utils-1.1.31-54.el7_8.noarch                                                                                                                1/2   
+  Cleanup    : yum-utils-1.1.31-45.el7.noarch                                                                                                                  2/2   
+  Verifying  : yum-utils-1.1.31-54.el7_8.noarch                                                                                                                1/2   
+  Verifying  : yum-utils-1.1.31-45.el7.noarch                                                                                                                  2/2   
+                                                                                                                                                                     
+Updated:                                                                                                                                                             
+  yum-utils.noarch 0:1.1.31-54.el7_8                                                                                                                                 
+                                                                                                                                                                     
+Complete!                                                                                                                                                            
+[root@ZFS vagrant]# uname -r                                                                                                                                         
+3.10.0-862.2.3.el7.x86_64                                                                                                                                            
+[root@ZFS vagrant]# sudo yum -y install http://download.zfsonlinux.org/epel/zfs-release.el7_8.noarch.rpm                                                             
+Loaded plugins: fastestmirror                                                                                                                                        
+zfs-release.el7_8.noarch.rpm                                                                                                                | 5.3 kB  00:00:00       
+Examining /var/tmp/yum-root-bhv8c2/zfs-release.el7_8.noarch.rpm: zfs-release-1-7.8.noarch                                                                            
+Marking /var/tmp/yum-root-bhv8c2/zfs-release.el7_8.noarch.rpm to be installed                                                                                        
+Resolving Dependencies                                                                                                                                               
+--> Running transaction check                                                                                                                                        
+---> Package zfs-release.noarch 0:1-7.8 will be installed                                                                                                            
+--> Finished Dependency Resolution                                                                                                                                   
+                                                                                                                                                                     
+Dependencies Resolved                                                                                                                                                
+                                                                                                                                                                     
+===================================================================================================================================================================  
+ Package                               Arch                             Version                          Repository                                           Size   
+===================================================================================================================================================================                 
+Installing:                                                                                                                                                                         
+zfs-release                           noarch                           1-7.8                            /zfs-release.el7_8.noarch                           2.9 k                  
+																																												 
+Transaction Summary                                                                                                                                                                 
+===================================================================================================================================================================                 
+Install  1 Package                                                                                                                                                                  
+																																												 
+Total size: 2.9 k                                                                                                                                                                   
+Installed size: 2.9 k                                                                                                                                                               
+Downloading packages:                                                                                                                                                               
+Running transaction check                                                                                                                                                           
+Running transaction test                                                                                                                                                            
+Transaction test succeeded                                                                                                                                                          
+Running transaction                                                                                                                                                                 
+Installing : zfs-release-1-7.8.noarch                                                                                                                        1/1                  
+Verifying  : zfs-release-1-7.8.noarch                                                                                                                        1/1                  
+																																												 
+Installed:                                                                                                                                                                          
+zfs-release.noarch 0:1-7.8                                                                                                                                                        
+																																												 
+Complete!                                                                                                                                                                           
+[root@ZFS vagrant]# gpg --quiet --with-fingerprint /etc/pki/rpm-gpg/RPM-GPG-KEY-zfsonlinux                                                                                          
+gpg: new configuration file `/root/.gnupg/gpg.conf' created                                                                                                                         
+gpg: WARNING: options in `/root/.gnupg/gpg.conf' are not yet active during this run                                                                                                 
+pub  2048R/F14AB620 2013-03-21 ZFS on Linux <zfs@zfsonlinux.org>                                                                                                                    
+   Key fingerprint = C93A FFFD 9F3F 7B03 C310  CEB6 A9D5 A1C0 F14A B620                                                                                                          
+sub  2048R/99685629 2013-03-21                                                                                                                                                      
+[root@ZFS vagrant]# yum-config-manager --enable zfs-kmod                                                                                                                            
+Loaded plugins: fastestmirror                                                                                                                                                       
+========================================================================= repo: zfs-kmod ==========================================================================                 
+[zfs-kmod]                                                                                                                                                                          
+async = True                                                                                                                                                                        
+bandwidth = 0                                                                                                                                                                       
+base_persistdir = /var/lib/yum/repos/x86_64/7                                                                                                                                       
+baseurl = http://download.zfsonlinux.org/epel/7.8/kmod/x86_64/                                                                                                                      
+cache = 0                                                                                                                                                                           
+cachedir = /var/cache/yum/x86_64/7/zfs-kmod                                                                                                                                         
+check_config_file_age = True                                                                                                                                                        
+compare_providers_priority = 80                                                                                                                                                     
+cost = 1000                                                                                                                                                                         
+deltarpm_metadata_percentage = 100                                                                                                                                                  
+deltarpm_percentage =                                                                                                                                                               
+enabled = 1                                                                                                                                                                         
+enablegroups = True                                                                                                                                                                 
+exclude =                                                                                                                                                                           
+failovermethod = priority                                                                                                                                                           
+ftp_disable_epsv = False                                                                                                                                                            
+gpgcadir = /var/lib/yum/repos/x86_64/7/zfs-kmod/gpgcadir                                                                                                                            
+gpgcakey =                                                                                                                                                                          
+gpgcheck = True                                                                                                                                                                     
+gpgdir = /var/lib/yum/repos/x86_64/7/zfs-kmod/gpgdir                                                                                                                                
+gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-zfsonlinux                                                                                                                             
+hdrdir = /var/cache/yum/x86_64/7/zfs-kmod/headers                                                                                                                                   
+http_caching = all                                                                                                                                                                  
+includepkgs =                                                                                                                                                                       
+ip_resolve =                                                                                                                                                                        
+keepalive = True                                                                                                                                                                    
+keepcache = False                                                                                                                                                                   
+mddownloadpolicy = sqlite                                                                                                                                                           
+mdpolicy = group:small                                                                                                                                                              
+mediaid =                                                                                                                                                                           
+metadata_expire = 604800                                                                                                                                                            
+metadata_expire_filter = read-only:present                                                                                                                                          
+metalink =                                                                                                                                                                          
+minrate = 0                                                                                                                                                         
+mirrorlist =                                                                                                                                                        
+mirrorlist_expire = 86400                                                                                                                                           
+name = ZFS on Linux for EL7 - kmod                                                                                                                                  
+old_base_cache_dir =                                                                                                                                                
+password =                                                                                                                                                          
+persistdir = /var/lib/yum/repos/x86_64/7/zfs-kmod                                                                                                                   
+pkgdir = /var/cache/yum/x86_64/7/zfs-kmod/packages                                                                                                                  
+proxy = False                                                                                                                                                       
+proxy_dict =                                                                                                                                                        
+proxy_password =                                                                                                                                                    
+proxy_username =                                                                                                                                                    
+repo_gpgcheck = False                                                                                                                                               
+retries = 10                                                                                                                                                        
+skip_if_unavailable = False                                                                                                                                         
+ssl_check_cert_permissions = True                                                                                                                                   
+sslcacert =                                                                                                                                                         
+sslclientcert =                                                                                                                                                     
+sslclientkey =                                                                                                                                                      
+sslverify = True                                                                                                                                                    
+throttle = 0                                                                                                                                                        
+timeout = 30.0                                                                                                                                                      
+ui_id = zfs-kmod/x86_64                                                                                                                                             
+ui_repoid_vars = releasever,                                                                                                                                        
+   basearch                                                                                                                                                         
+username =                                                                                                                                                          
+                                                                                                                                                                    
+[root@ZFS vagrant]# yum-config-manager --disable zfs                                                                                                                
+Loaded plugins: fastestmirror                                                                                                                                       
+============================================================================ repo: zfs ============================================================================ 
+[zfs]                                                                                                                                                               
+async = True                                                                                                                                                        
+bandwidth = 0                                                                                                                                                       
+base_persistdir = /var/lib/yum/repos/x86_64/7                                                                                                                       
+baseurl = http://download.zfsonlinux.org/epel/7.8/x86_64/                                                                                                           
+cache = 0                                                                                                                                                           
+cachedir = /var/cache/yum/x86_64/7/zfs                                                                                                                              
+check_config_file_age = True                                                                                                                                        
+compare_providers_priority = 80                                                                                                                                     
+cost = 1000                                                                                                                                                         
+deltarpm_metadata_percentage = 100                                                                                                                                  
+deltarpm_percentage =                                                                                                                                               
+enabled = 0                                                                                                                                                         
+enablegroups = True                                                                                                                                                 
+exclude =                                                                                                                                                           
+failovermethod = priority                                                                                                                                           
+ftp_disable_epsv = False                                                                                                                                            
+gpgcadir = /var/lib/yum/repos/x86_64/7/zfs/gpgcadir                                                                                                                 
+gpgcakey =                                                                                                                                                          
+gpgcheck = True                                                                                                                                                     
+gpgdir = /var/lib/yum/repos/x86_64/7/zfs/gpgdir                                                                                                                     
+gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-zfsonlinux                                                                                                             
+hdrdir = /var/cache/yum/x86_64/7/zfs/headers                                                                                                                        
+http_caching = all                                                                                                                                                  
+includepkgs =                                                                                                                                                       
+ip_resolve =                                                                                                                                                        
+keepalive = True                                                                                                                                                    
+keepcache = False                                                                                                                                                   
+mddownloadpolicy = sqlite                                                                                                                                           
+mdpolicy = group:small                                                                                                                                              
+mediaid =                                                                                                                                                           
+metadata_expire = 604800                                                                                                                                            
+metadata_expire_filter = read-only:present                                                                                                                          
+metalink =                                                                                                                                                          
+minrate = 0  
+baseurl = http://download.zfsonlinux.org/epel/7.8/x86_64/                                                                                                                                                                                             
+cache = 0                                                                                      
+cachedir = /var/cache/yum/x86_64/7/zfs                                                         
+check_config_file_age = True                                                                   
+compare_providers_priority = 80                                                                
+cost = 1000                                                                                    
+deltarpm_metadata_percentage = 100                                                             
+deltarpm_percentage =                                                                          
+enabled = 0                                                                                    
+enablegroups = True                                                                            
+exclude =                                                                                      
+failovermethod = priority                                                                      
+ftp_disable_epsv = False                                                                       
+gpgcadir = /var/lib/yum/repos/x86_64/7/zfs/gpgcadir                                            
+gpgcakey =                                                                                     
+gpgcheck = True                                                                                
+gpgdir = /var/lib/yum/repos/x86_64/7/zfs/gpgdir                                                
+gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-zfsonlinux                                        
+hdrdir = /var/cache/yum/x86_64/7/zfs/headers                                                   
+http_caching = all                                                                             
+includepkgs =                                                                                  
+ip_resolve =                                                                                   
+keepalive = True                                                                               
+keepcache = False                                                                              
+mddownloadpolicy = sqlite                                                                      
+mdpolicy = group:small                                                                         
+mediaid =                                                                                      
+metadata_expire = 604800                                                                       
+metadata_expire_filter = read-only:present                                                     
+metalink =                                                                                     
+minrate = 0                                                                                    
+mirrorlist =                                                                                   
+mirrorlist_expire = 86400                                                                      
+name = ZFS on Linux for EL7 - dkms                                                             
+old_base_cache_dir =                                                                           
+password =                                                                                     
+persistdir = /var/lib/yum/repos/x86_64/7/zfs                                                   
+pkgdir = /var/cache/yum/x86_64/7/zfs/packages                                                  
+proxy = False                                                                                  
+proxy_dict =                                                                                   
+proxy_password =                                                                               
+proxy_username =                                                                               
+repo_gpgcheck = False                                                                          
+retries = 10                                                                                   
+skip_if_unavailable = False                                                                    
+ssl_check_cert_permissions = True                                                              
+sslcacert =                                                                                    
+sslclientcert =                                                                                
+sslclientkey =                                                                                 
+sslverify = True                                                                               
+throttle = 0                                                                                   
+timeout = 30.0                                                                                 
+ui_id = zfs/x86_64                                                                             
+ui_repoid_vars = releasever,                                                                   
+   basearch                                                                                    
+username =                                                                                     
+                                                                                               
+[root@ZFS vagrant]# yum repolist --enabled | grep zfs && echo ZFS repo enabled                 
+Command line error: no such option: --enabled                                                  
+[root@ZFS vagrant]# exit                                                                       
+exit                                                                                           
+[vagrant@ZFS ~]$ exit                                                                          
+exit                                                                                           
+                                                                                               
+Script done on Sat 12 Sep 2020 06:07:57 PM UTC                                                 
+Script started on Mon 14 Sep 2020 03:23:40 AM UTC                                                                                                                        
+[vagrant@ZFS ~]$ sudo su                                                                                                                                                                                                                            
+[root@ZFS vagrant]# yum repolist --enabled | grep zfs && echo ZFS repo enabled                                                                                           
+Command line error: no such option: --enabled                                                                                                                            
+[root@ZFS vagrant]# yum repolist                                                                                                                                         
+Loaded plugins: fastestmirror                                                                                                                                            
+Loading mirror speeds from cached hostfile                                                                                                                               
+ * base: mirror.truenetwork.ru                                                                                                                                           
+ * extras: mirror.truenetwork.ru                                                                                                                                         
+ * updates: mirror.reconn.ru                                                                                                                                             
+base                                                                                                                                        | 3.6 kB  00:00:00           
+extras                                                                                                                                      | 2.9 kB  00:00:00           
+updates                                                                                                                                     | 2.9 kB  00:00:00           
+zfs-kmod                                                                                                                                    | 2.9 kB  00:00:00           
+zfs-kmod/x86_64/primary_db                                                                                                                  |  49 kB  00:00:01           
+repo id                                                                  repo name                                                                           status      
+base/7/x86_64                                                            CentOS-7 - Base                                                                     10,070      
+extras/7/x86_64                                                          CentOS-7 - Extras                                                                      413      
+updates/7/x86_64                                                         CentOS-7 - Updates                                                                   1,127      
+zfs-kmod/x86_64                                                          ZFS on Linux for EL7 - kmod                                                             13      
+repolist: 11,623                                                                                                                                                         
+[root@ZFS vagrant]#                                                                                                                                                      
+[root@ZFS vagrant]# yum install -y zfs                                                                                                                                   
+Loaded plugins: fastestmirror                                                                                                                                            
+Loading mirror speeds from cached hostfile                                                                                                                               
+ * base: mirror.truenetwork.ru                                                                                                                                           
+ * extras: mirror.truenetwork.ru                                                                                                                                         
+ * updates: ftp.nsc.ru                                                                                                                                                   
+Resolving Dependencies                                                                                                                                                   
+--> Running transaction check                                                                                                                                            
+---> Package zfs.x86_64 0:0.8.4-1.el7 will be installed                                                                                                                  
+--> Processing Dependency: zfs-kmod = 0.8.4 for package: zfs-0.8.4-1.el7.x86_64                                                                                          
+--> Processing Dependency: libzpool2 = 0.8.4 for package: zfs-0.8.4-1.el7.x86_64                                                                                         
+--> Processing Dependency: libzfs2 = 0.8.4 for package: zfs-0.8.4-1.el7.x86_64                                                                                           
+--> Processing Dependency: libuutil1 = 0.8.4 for package: zfs-0.8.4-1.el7.x86_64                                                                                         
+--> Processing Dependency: libnvpair1 = 0.8.4 for package: zfs-0.8.4-1.el7.x86_64                                                                                        
+--> Processing Dependency: sysstat for package: zfs-0.8.4-1.el7.x86_64                                                                                                   
+--> Processing Dependency: libzpool.so.2()(64bit) for package: zfs-0.8.4-1.el7.x86_64                                                                                    
+--> Processing Dependency: libzfs_core.so.1()(64bit) for package: zfs-0.8.4-1.el7.x86_64                                                                                 
+--> Processing Dependency: libzfs.so.2()(64bit) for package: zfs-0.8.4-1.el7.x86_64                                                                                      
+--> Processing Dependency: libuutil.so.1()(64bit) for package: zfs-0.8.4-1.el7.x86_64                                                                                    
+--> Processing Dependency: libnvpair.so.1()(64bit) for package: zfs-0.8.4-1.el7.x86_64                                                                                   
+--> Running transaction check                                                                                                                                            
+---> Package kmod-zfs.x86_64 0:0.8.4-1.el7 will be installed                                                                                                             
+--> Processing Dependency: kernel(posix_acl_valid) = 0xc89bfa92 for package: kmod-zfs-0.8.4-1.el7.x86_64                                                                 
+--> Processing Dependency: kernel(generic_start_io_acct) = 0x138e5c86 for package: kmod-zfs-0.8.4-1.el7.x86_64                                                           
+--> Processing Dependency: kernel(generic_end_io_acct) = 0x507d34f3 for package: kmod-zfs-0.8.4-1.el7.x86_64                                                             
+--> Processing Dependency: kernel(__check_object_size) = 0x88db9f48 for package: kmod-zfs-0.8.4-1.el7.x86_64                                                             
+---> Package libnvpair1.x86_64 0:0.8.4-1.el7 will be installed                                                                                                           
+---> Package libuutil1.x86_64 0:0.8.4-1.el7 will be installed                                                                                                            
+---> Package libzfs2.x86_64 0:0.8.4-1.el7 will be installed                                                                                                              
+---> Package libzpool2.x86_64 0:0.8.4-1.el7 will be installed                                                                                                            
+---> Package sysstat.x86_64 0:10.1.5-19.el7 will be installed                                                                                                            
+--> Processing Dependency: libsensors.so.4()(64bit) for package: sysstat-10.1.5-19.el7.x86_64                                                                            
+--> Running transaction check                                                                                                                                            
+---> Package kernel.x86_64 0:3.10.0-1127.19.1.el7 will be installed                                                                                                      
+--> Processing Dependency: linux-firmware >= 20190429-72 for package: kernel-3.10.0-1127.19.1.el7.x86_64                                                                 
+---> Package lm_sensors-libs.x86_64 0:3.4.0-8.20160601gitf9185e5.el7 will be installed                                                                                   
+--> Running transaction check                                                                                                                                            
+---> Package linux-firmware.noarch 0:20180220-62.git6d51311.el7 will be updated                                                                                          
+---> Package linux-firmware.noarch 0:20191203-76.gite8a0f4c.el7 will be an update                                                                                        
+--> Processing Conflict: kernel-3.10.0-1127.19.1.el7.x86_64 conflicts selinux-policy-targeted < 3.13.1-201                                                               
+--> Restarting Dependency Resolution with new changes.                                                                                                                   
+--> Running transaction check                                                                                                                                            
+---> Package selinux-policy-targeted.noarch 0:3.13.1-192.el7_5.3 will be updated      
+---> Package selinux-policy-targeted.noarch 0:3.13.1-266.el7_8.1 will be an update                                                                                                                                                                           
+--> Processing Dependency: selinux-policy = 3.13.1-266.el7_8.1 for package: selinux-policy-targeted-3.13.1-266.el7_8.1.noarch                                             
+--> Processing Dependency: selinux-policy = 3.13.1-266.el7_8.1 for package: selinux-policy-targeted-3.13.1-266.el7_8.1.noarch                                             
+--> Processing Dependency: policycoreutils >= 2.5-24 for package: selinux-policy-targeted-3.13.1-266.el7_8.1.noarch                                                       
+--> Running transaction check                                                                                                                                             
+---> Package policycoreutils.x86_64 0:2.5-22.el7 will be updated                                                                                                          
+---> Package policycoreutils.x86_64 0:2.5-34.el7 will be an update                                                                                                        
+--> Processing Dependency: libsepol >= 2.5-10 for package: policycoreutils-2.5-34.el7.x86_64                                                                              
+--> Processing Dependency: libsemanage >= 2.5-14 for package: policycoreutils-2.5-34.el7.x86_64                                                                           
+--> Processing Dependency: libselinux-utils >= 2.5-14 for package: policycoreutils-2.5-34.el7.x86_64                                                                      
+---> Package selinux-policy.noarch 0:3.13.1-192.el7_5.3 will be updated                                                                                                   
+---> Package selinux-policy.noarch 0:3.13.1-266.el7_8.1 will be an update                                                                                                 
+--> Running transaction check                                                                                                                                             
+---> Package libselinux-utils.x86_64 0:2.5-12.el7 will be updated                                                                                                         
+---> Package libselinux-utils.x86_64 0:2.5-15.el7 will be an update                                                                                                       
+--> Processing Dependency: libselinux(x86-64) = 2.5-15.el7 for package: libselinux-utils-2.5-15.el7.x86_64                                                                
+---> Package libsemanage.x86_64 0:2.5-11.el7 will be updated                                                                                                              
+---> Package libsemanage.x86_64 0:2.5-14.el7 will be an update                                                                                                            
+---> Package libsepol.x86_64 0:2.5-8.1.el7 will be updated                                                                                                                
+---> Package libsepol.x86_64 0:2.5-10.el7 will be an update                                                                                                               
+--> Running transaction check                                                                                                                                             
+---> Package libselinux.x86_64 0:2.5-12.el7 will be updated                                                                                                               
+--> Processing Dependency: libselinux(x86-64) = 2.5-12.el7 for package: libselinux-python-2.5-12.el7.x86_64                                                               
+---> Package libselinux.x86_64 0:2.5-15.el7 will be an update                                                                                                             
+--> Running transaction check                                                                                                                                             
+---> Package libselinux-python.x86_64 0:2.5-12.el7 will be updated                                                                                                        
+---> Package libselinux-python.x86_64 0:2.5-15.el7 will be an update                                                                                                      
+--> Finished Dependency Resolution                                                                                                                                        
+                                                                                                                                                                          
+Dependencies Resolved                                                                                                                                                     
+                                                                                                                                                                          
+===================================================================================================================================================================       
+ Package                                      Arch                        Version                                              Repository                     Size        
+===================================================================================================================================================================       
+Installing:                                                                                                                                                               
+ kernel                                       x86_64                      3.10.0-1127.19.1.el7                                 updates                        50 M        
+ zfs                                          x86_64                      0.8.4-1.el7                                          zfs-kmod                      485 k        
+Updating:                                                                                                                                                                 
+ selinux-policy-targeted                      noarch                      3.13.1-266.el7_8.1                                   updates                       7.0 M        
+Installing for dependencies:                                                                                                                                              
+ kmod-zfs                                     x86_64                      0.8.4-1.el7                                          zfs-kmod                      1.1 M        
+ libnvpair1                                   x86_64                      0.8.4-1.el7                                          zfs-kmod                       32 k        
+ libuutil1                                    x86_64                      0.8.4-1.el7                                          zfs-kmod                       26 k        
+ libzfs2                                      x86_64                      0.8.4-1.el7                                          zfs-kmod                      208 k        
+ libzpool2                                    x86_64                      0.8.4-1.el7                                          zfs-kmod                      860 k        
+ lm_sensors-libs                              x86_64                      3.4.0-8.20160601gitf9185e5.el7                       base                           42 k        
+ sysstat                                      x86_64                      10.1.5-19.el7                                        base                          315 k        
+Updating for dependencies:                                                                                                                                                
+ libselinux                                   x86_64                      2.5-15.el7                                           base                          162 k        
+ libselinux-python                            x86_64                      2.5-15.el7                                           base                          236 k        
+ libselinux-utils                             x86_64                      2.5-15.el7                                           base                          151 k        
+ libsemanage                                  x86_64                      2.5-14.el7                                           base                          151 k        
+ libsepol                                     x86_64                      2.5-10.el7                                           base                          297 k        
+ linux-firmware                               noarch                      20191203-76.gite8a0f4c.el7                           base                           81 M        
+ policycoreutils                              x86_64                      2.5-34.el7                                           base                          917 k        
+ selinux-policy                               noarch                      3.13.1-266.el7_8.1                                   updates                       497 k        
+                                                                                                                                                                          
+Transaction Summary                                                                                                                                                       
+===================================================================================================================================================================       
+Install  2 Packages (+7 Dependent packages)                                                                                                                               
+Upgrade  1 Package  (+8 Dependent packages)                                                                                                                               
+                                                                                                                                                                          
+Total download size: 144 M                                                                                                                                                
+Downloading packages:                                                                                                                                                     
+No Presto metadata available for base 
+No Presto metadata available for updates
+(1/18): libselinux-2.5-15.el7.x86_64.rpm                                                                                                    | 162 kB  00:00:01
+(2/18): libselinux-python-2.5-15.el7.x86_64.rpm                                                                                             | 236 kB  00:00:01
+(3/18): libsemanage-2.5-14.el7.x86_64.rpm                                                                                                   | 151 kB  00:00:01
+(4/18): libnvpair1-0.8.4-1.el7.x86_64.rpm                                                                                                   |  32 kB  00:00:03
+(5/18): libsepol-2.5-10.el7.x86_64.rpm                                                                                                      | 297 kB  00:00:01
+(6/18): libuutil1-0.8.4-1.el7.x86_64.rpm                                                                                                    |  26 kB  00:00:00
+(7/18): libselinux-utils-2.5-15.el7.x86_64.rpm                                                                                              | 151 kB  00:00:02
+(8/18): libzfs2-0.8.4-1.el7.x86_64.rpm                                                                                           ] 346 kB/s | 2.0 MB  00:06:59 ETA
+                                              | 208 kB  00:00:01
+(9/18): lm_sensors-libs-3.4.0-8.20160601gitf9185e5.el7.x86_64.rpm                                                                           |  42 kB  00:00:00
+(13/18): linux-firmware-20191203-76.gite8a0f4c.el7.noarch.rpm       2% [=                                                        ] 440 kB/s | 3.3 MB  00:05:26 ETA
+(10/18): policycoreutils-2.5-34.el7.x86_64.rpm                                                                                              | 917 kB  00:00:02
+(11/18): selinux-policy-3.13.1-266.el7_8.1.noarch.rpm                                                                            ] 476 kB/s | 4.5 MB  00:04:58 ETA
+                                              | 497 kB  00:00:01
+(14/18): libzpool2-0.8.4-1.el7.x86_64.rpm                           3% [==                                                       ] 445 kB/s | 5.3 MB  00:05:18 ETA
+(16/18): selinux-policy-20191203-76.gite8a0f4c.el7.noarch.rpm       4% [==                                                       ] 437 kB/s | 6.2 MB  00:05:21 ETA
+(12/18): kernel-3.10.0-1127.19.1.el7.x86_64.rpm                     4% [==-                                                      ] 296 kB/s | 6.4 MB  00:07:54 ETA
+(14/18): libzpool2-0.8.4-1.el7.x86_64.rpm                           4% [==-                                                      ] 274 kB/s | 7.0 MB  00:08:31 ETA
+(16/18): selinux-policy-targeted-3.13.1-266.el7_8.1.noarch.rpm      5% [===                                                      ] 356 kB/s | 8.9 MB  00:06:39 ETA
+(13/18): kmod-zfs-0.8.4-1.el7.x86_64.rpm                            6% [===                                                      ] 337 kB/s | 8.6 MB  00:06:50 ETA
+(15/18): linux-firmware-20191203-76.gite8a0f4c.el7.noarch.rpm       6% [===-                                                     ] 302 kB/s | 9.2 MB  00:07:36 ETA
+
+#**********************************************************************************
+#**********************************************************************************
+#**********************************************************************************
+     
+(18/18): linux-firmware-20191203-76.gite8a0f4c.el7.noarch.rpm      99% [========================================================-]  43 kB/s | 143 MB  00:00:21 ETA
+(18/18): linux-firmware-20191203-76.gite8a0f4c.el7.noarch.rpm      99% [========================================================-]  38 kB/s | 143 MB  00:00:22 ETA
+(18/18): linux-firmware-20191203-76.gite8a0f4c.el7.noarch.rpm      99% [========================================================-]  19 kB/s | 143 MB  00:00:41 ETA
+(18/18): linux-firmware-20191203-76.gite8a0f4c.el7.noarch.rpm      99% [========================================================-]  35 kB/s | 143 MB  00:00:18 ETA
+(18/18): linux-firmware-20191203-76.gite8a0f4c.el7.noarch.rpm      99% [========================================================-]  38 kB/s | 143 MB  00:00:14 ETA
+(18/18): linux-firmware-20191203-76.gite8a0f4c.el7.noarch.rpm      99% [========================================================-]  40 kB/s | 143 MB  00:00:12 ETA
+(18/18): linux-firmware-20191203-76.gite8a0f4c.el7.noarch.rpm      99% [========================================================-]  45 kB/s | 143 MB  00:00:08 ETA
+(18/18): linux-firmware-20191203-76.gite8a0f4c.el7.noarch.rpm      99% [========================================================-]  73 kB/s | 143 MB  00:00:02 ETA
+(18/18): linux-firmware-20191203-76.gite8a0f4c.el7.noarch.rpm      99% [========================================================-]  72 kB/s | 144 MB  00:00:00 ETA
+pm                                                                               |  81 MB  00:08:38
+------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+Total                                                                                                                               86 kB/s | 144 MB  00:28:21
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Updating   : libsepol-2.5-10.el7.x86_64 [####################################################                                                            ]  1/27
+  Updating   : libsepol-2.5-10.el7.x86_64 [##########################################################################################################      ]  1/27
+  Updating   : libsepol-2.5-10.el7.x86_64                                                                                                                     1/27
+  Updating   : libselinux-2.5-15.el7.x86_64                                                            ##################################################  ]  2/27
+                                                      2/27
+  Installing : libnvpair1-0.8.4-1.el7.x86_64                                                                                                                  3/27
+  Updating   : libsemanage-2.5-14.el7.x86_64 [##############################################################################################               ]  4/27
+  Updating   : libsemanage-2.5-14.el7.x86_64                                                                                                                  4/27
+  Installing : libuutil1-0.8.4-1.el7.x86_64                                                                                                                   5/27
+  Installing : libzfs2-0.8.4-1.el7.x86_64 [############################################################                                                    ]  6/27
+  Installing : libzfs2-0.8.4-1.el7.x86_64                                                                                                                     6/27
+  Installing : libzpool2-0.8.4-1.el7.x86_64 [############                                                                                                  ]  7/27
+  Installing : libzpool2-0.8.4-1.el7.x86_64 [########################                                                                                      ]  7/27
+  Installing : libzpool2-0.8.4-1.el7.x86_64 [#######################################                                                                       ]  7/27
+  Installing : libzpool2-0.8.4-1.el7.x86_64 [###################################################                                                           ]  7/27
+  Installing : libzpool2-0.8.4-1.el7.x86_64 [###################################################################                                           ]  7/27
+  Installing : libzpool2-0.8.4-1.el7.x86_64 [#################################################################################                             ]  7/27
+  Installing : libzpool2-0.8.4-1.el7.x86_64 [##############################################################################################                ]  7/27
+  Installing : libzpool2-0.8.4-1.el7.x86_64 [############################################################################################################  ]  7/27
+-0.8.4-1.el7.x86_64                                                                                                                   7/27
+  Updating   : libselinux-utils-2.5-15.el7.x86_64 [##############################                                                                          ]  8/27
+  Updating   : libselinux-utils-2.5-15.el7.x86_64 [################################################################                                        ]  8/27
+  Updating   : libselinux-utils-2.5-15.el7.x86_64 [######################################################################################                  ]  8/27
+  Updating   : libselinux-utils-2.5-15.el7.x86_64 [############################################################################################            ]  8/27
+  Updating   : libselinux-utils-2.5-15.el7.x86_64 [###################################################################################################     ]  8/27
+  Updating   : libselinux-utils-2.5-15.el7.x86_64                                                                                                             8/27
+  Updating   : policycoreutils-2.5-34.el7.x86_64 [#####                                                                                                    ]  9/27
+  Updating   : policycoreutils-2.5-34.el7.x86_64 [############                                                                                             ]  9/27
+  Updating   : policycoreutils-2.5-34.el7.x86_64 [##################                                                                                       ]  9/27
+  Updating   : policycoreutils-2.5-34.el7.x86_64 [#########################                                                                                ]  9/27
+  Updating   : policycoreutils-2.5-34.el7.x86_64 [################################                                                                         ]  9/27
+  Updating   : policycoreutils-2.5-34.el7.x86_64 [######################################                                                                   ]  9/27
+  Updating   : policycoreutils-2.5-34.el7.x86_64 [############################################                                                             ]  9/27
+  Updating   : policycoreutils-2.5-34.el7.x86_64 [##################################################                                                       ]  9/27
+  Updating   : policycoreutils-2.5-34.el7.x86_64 [########################################################                                                 ]  9/27
+  Updating   : policycoreutils-2.5-34.el7.x86_64 [###############################################################                                          ]  9/27
+  Updating   : policycoreutils-2.5-34.el7.x86_64 [#######################################################################                                  ]  9/27
+  Updating   : policycoreutils-2.5-34.el7.x86_64 [#############################################################################                            ]  9/27
+  Updating   : policycoreutils-2.5-34.el7.x86_64 [#####################################################################################                    ]  9/27
+  Updating   : policycoreutils-2.5-34.el7.x86_64 [############################################################################################             ]  9/27
+  Updating   : policycoreutils-2.5-34.el7.x86_64 [#################################################################################################        ]  9/27
+  Updating   : policycoreutils-2.5-34.el7.x86_64                                                                                                              9/27
+  Updating   : selinux-policy-3.13.1-266.el7_8.1.noarch [#############################################################################################     ] 10/27
+  Updating   : selinux-policy-3.13.1-266.el7_8.1.noarch                                                                                                      10/27
+  Updating   : linux-firmware-20191203-76.gite8a0f4c.el7.noarch [#####                                                                                     ] 11/27
+  Updating   : linux-firmware-20191203-76.gite8a0f4c.el7.noarch [##########                                                                                ] 11/27
+  Updating   : linux-firmware-20191203-76.gite8a0f4c.el7.noarch [################                                                                          ] 11/27
+  Updating   : linux-firmware-20191203-76.gite8a0f4c.el7.noarch [######################                                                                    ] 11/27
+  Updating   : linux-firmware-20191203-76.gite8a0f4c.el7.noarch [###########################                                                               ] 11/27
+  Updating   : linux-firmware-20191203-76.gite8a0f4c.el7.noarch [#################################                                                         ] 11/27
+  Updating   : linux-firmware-20191203-76.gite8a0f4c.el7.noarch [######################################                                                    ] 11/27
+  Updating   : linux-firmware-20191203-76.gite8a0f4c.el7.noarch [############################################                                              ] 11/27
+  Updating   : linux-firmware-20191203-76.gite8a0f4c.el7.noarch [##################################################                                        ] 11/27
+  Updating   : linux-firmware-20191203-76.gite8a0f4c.el7.noarch [#######################################################                                   ] 11/27
+  Updating   : linux-firmware-20191203-76.gite8a0f4c.el7.noarch [#############################################################                             ] 11/27
+  Updating   : linux-firmware-20191203-76.gite8a0f4c.el7.noarch [##################################################################                        ] 11/27
+  Updating   : linux-firmware-20191203-76.gite8a0f4c.el7.noarch [########################################################################                  ] 11/27
+  Updating   : linux-firmware-20191203-76.gite8a0f4c.el7.noarch [##############################################################################            ] 11/27
+  Updating   : linux-firmware-20191203-76.gite8a0f4c.el7.noarch [###################################################################################       ] 11/27
+  Updating   : linux-firmware-20191203-76.gite8a0f4c.el7.noarch [######################################################################################### ] 11/27
+f4c.el7.noarch                                                                                              11/27
+  Installing : kernel-3.10.0-1127.19.1.el7.x86_64 [#####                                                                                                   ] 12/27
+  Installing : kernel-3.10.0-1127.19.1.el7.x86_64 [##########                                                                                              ] 12/27
+  Installing : kernel-3.10.0-1127.19.1.el7.x86_64 [################                                                                                        ] 12/27
+  Installing : kernel-3.10.0-1127.19.1.el7.x86_64 [######################                                                                                  ] 12/27
+  Installing : kernel-3.10.0-1127.19.1.el7.x86_64 [############################                                                                            ] 12/27
+  Installing : kernel-3.10.0-1127.19.1.el7.x86_64 [##################################                                                                      ] 12/27
+  Installing : kernel-3.10.0-1127.19.1.el7.x86_64 [#######################################                                                                 ] 12/27
+  Installing : kernel-3.10.0-1127.19.1.el7.x86_64 [#############################################                                                           ] 12/27
+  Installing : kernel-3.10.0-1127.19.1.el7.x86_64 [####################################################                                                    ] 12/27
+  Installing : kernel-3.10.0-1127.19.1.el7.x86_64 [#########################################################                                               ] 12/27
+  Installing : kernel-3.10.0-1127.19.1.el7.x86_64 [###############################################################                                         ] 12/27
+  Installing : kernel-3.10.0-1127.19.1.el7.x86_64 [####################################################################                                    ] 12/27
+  Installing : kernel-3.10.0-1127.19.1.el7.x86_64 [##########################################################################                              ] 12/27
+  Installing : kernel-3.10.0-1127.19.1.el7.x86_64 [#################################################################################                       ] 12/27
+  Installing : kernel-3.10.0-1127.19.1.el7.x86_64 [######################################################################################                  ] 12/27
+  Installing : kernel-3.10.0-1127.19.1.el7.x86_64 [############################################################################################            ] 12/27
+  Installing : kernel-3.10.0-1127.19.1.el7.x86_64 [##################################################################################################      ] 12/27
+  Installing : kernel-3.10.0-1127.19.1.el7.x86_64                                                                                                            12/27
+  Installing : kmod-zfs-0.8.4-1.el7.x86_64 [######                                                                                                         ] 13/27
+  Installing : kmod-zfs-0.8.4-1.el7.x86_64 [#############                                                                                                  ] 13/27
+  Installing : kmod-zfs-0.8.4-1.el7.x86_64 [#####################                                                                                          ] 13/27
+  Installing : kmod-zfs-0.8.4-1.el7.x86_64 [############################                                                                                   ] 13/27
+  Installing : kmod-zfs-0.8.4-1.el7.x86_64 [###################################                                                                            ] 13/27
+  Installing : kmod-zfs-0.8.4-1.el7.x86_64 [############################################                                                                   ] 13/27
+  Installing : kmod-zfs-0.8.4-1.el7.x86_64 [###################################################                                                            ] 13/27
+  Installing : kmod-zfs-0.8.4-1.el7.x86_64 [##########################################################                                                     ] 13/27
+  Installing : kmod-zfs-0.8.4-1.el7.x86_64 [###################################################################                                            ] 13/27
+  Installing : kmod-zfs-0.8.4-1.el7.x86_64 [##########################################################################                                     ] 13/27
+  Installing : kmod-zfs-0.8.4-1.el7.x86_64 [##################################################################################                             ] 13/27
+  Installing : kmod-zfs-0.8.4-1.el7.x86_64 [########################################################################################                       ] 13/27
+  Installing : kmod-zfs-0.8.4-1.el7.x86_64 [#################################################################################################              ] 13/27
+  Installing : kmod-zfs-0.8.4-1.el7.x86_64 [#########################################################################################################      ] 13/27
+  Installing : kmod-zfs-0.8.4-1.el7.x86_64                                                                                                                   13/27
+  Installing : lm_sensors-libs-3.4.0-8.20160601gitf9185e5.el7.x86_64                                                                                         14/27
+  Installing : sysstat-10.1.5-19.el7.x86_64 [##########################                                                                                    ] 15/27
+  Installing : sysstat-10.1.5-19.el7.x86_64 [#################################################                                                             ] 15/27
+  Installing : sysstat-10.1.5-19.el7.x86_64 [#######################################################################                                       ] 15/27
+  Installing : sysstat-10.1.5-19.el7.x86_64 [################################################################################                              ] 15/27
+  Installing : sysstat-10.1.5-19.el7.x86_64 [######################################################################################                        ] 15/27
+  Installing : sysstat-10.1.5-19.el7.x86_64 [#############################################################################################                 ] 15/27
+  Installing : sysstat-10.1.5-19.el7.x86_64 [###################################################################################################           ] 15/27
+  Installing : sysstat-10.1.5-19.el7.x86_64 [#########################################################################################################     ] 15/27
+  Installing : sysstat-10.1.5-19.el7.x86_64                                                                                                                  15/27
+  Installing : zfs-0.8.4-1.el7.x86_64 [###############                                                                                                     ] 16/27
+  Installing : zfs-0.8.4-1.el7.x86_64 [###################################                                                                                 ] 16/27
+  Installing : zfs-0.8.4-1.el7.x86_64 [#############################################################                                                       ] 16/27
+  Installing : zfs-0.8.4-1.el7.x86_64 [###########################################################################                                         ] 16/27
+  Installing : zfs-0.8.4-1.el7.x86_64 [####################################################################################                                ] 16/27
+  Installing : zfs-0.8.4-1.el7.x86_64 [###########################################################################################                         ] 16/27
+  Installing : zfs-0.8.4-1.el7.x86_64 [#################################################################################################                   ] 16/27
+  Installing : zfs-0.8.4-1.el7.x86_64 [########################################################################################################            ] 16/27
+  Installing : zfs-0.8.4-1.el7.x86_64 [################################################################################################################    ] 16/27
+  Installing : zfs-0.8.4-1.el7.x86_64                                                                                                                        16/27
+  Updating   : selinux-policy-targeted-3.13.1-266.el7_8.1.noarch [#####                                                                                    ] 17/27
+  Updating   : selinux-policy-targeted-3.13.1-266.el7_8.1.noarch [##########                                                                               ] 17/27
+  Updating   : selinux-policy-targeted-3.13.1-266.el7_8.1.noarch [################                                                                         ] 17/27
+  Updating   : selinux-policy-targeted-3.13.1-266.el7_8.1.noarch [######################                                                                   ] 17/27
+  Updating   : selinux-policy-targeted-3.13.1-266.el7_8.1.noarch [###########################                                                              ] 17/27
+  Updating   : selinux-policy-targeted-3.13.1-266.el7_8.1.noarch [#################################                                                        ] 17/27
+  Updating   : selinux-policy-targeted-3.13.1-266.el7_8.1.noarch [######################################                                                   ] 17/27
+  Updating   : selinux-policy-targeted-3.13.1-266.el7_8.1.noarch [############################################                                             ] 17/27
+  Updating   : selinux-policy-targeted-3.13.1-266.el7_8.1.noarch [##################################################                                       ] 17/27
+  Updating   : selinux-policy-targeted-3.13.1-266.el7_8.1.noarch [#######################################################                                  ] 17/27
+  Updating   : selinux-policy-targeted-3.13.1-266.el7_8.1.noarch [#############################################################                            ] 17/27
+    Updating   : selinux-policy-targeted-3.13.1-266.el7_8.1.noarch [##################################################################                       ] 17/27
+  Updating   : selinux-policy-targeted-3.13.1-266.el7_8.1.noarch [########################################################################                 ] 17/27
+  Updating   : selinux-policy-targeted-3.13.1-266.el7_8.1.noarch [##############################################################################           ] 17/27
+  Updating   : selinux-policy-targeted-3.13.1-266.el7_8.1.noarch [###################################################################################      ] 17/27
+  Updating   : selinux-policy-targeted-3.13.1-266.el7_8.1.noarch                                                                                             17/27
+  Updating   : libselinux-python-2.5-15.el7.x86_64 [##################################################                                                     ] 18/27
+  Updating   : libselinux-python-2.5-15.el7.x86_64 [#####################################################################################################  ] 18/27
+6_64                                                                                                           18/27
+  Cleanup    : selinux-policy-targeted-3.13.1-192.el7_5.3.noarch                                                                                             19/27
+  Cleanup    : selinux-policy-3.13.1-192.el7_5.3.noarch                                                                                                      20/27
+  Cleanup    : policycoreutils-2.5-22.el7.x86_64                                                                                                             21/27
+  Cleanup    : libselinux-utils-2.5-12.el7.x86_64                                                                                                            22/27
+  Cleanup    : libsemanage-2.5-11.el7.x86_64                                                                                                                 23/27
+  Cleanup    : libselinux-python-2.5-12.el7.x86_64                                                                                                           24/27
+  Cleanup    : linux-firmware-20180220-62.git6d51311.el7.noarch                                                                                              25/27
+  Cleanup    : libselinux-2.5-12.el7.x86_64                                                                                                                  26/27
+  Cleanup    : libsepol-2.5-8.1.el7.x86_64                                                                                                                   27/27
+  Verifying  : libselinux-2.5-15.el7.x86_64                                                                                                                   1/27
+  Verifying  : sysstat-10.1.5-19.el7.x86_64                                                                                                                   2/27
+  Verifying  : kmod-zfs-0.8.4-1.el7.x86_64                                                                                                                    3/27
+  Verifying  : policycoreutils-2.5-34.el7.x86_64                                                                                                              4/27
+  Verifying  : selinux-policy-3.13.1-266.el7_8.1.noarch                                                                                                       5/27
+  Verifying  : kernel-3.10.0-1127.19.1.el7.x86_64                                                                                                             6/27
+  Verifying  : libzfs2-0.8.4-1.el7.x86_64                                                                                                                     7/27
+  Verifying  : libselinux-utils-2.5-15.el7.x86_64                                                                                                             8/27
+  Verifying  : lm_sensors-libs-3.4.0-8.20160601gitf9185e5.el7.x86_64                                                                                          9/27
+  Verifying  : libsemanage-2.5-14.el7.x86_64                                                                                                                 10/27
+  Verifying  : libselinux-python-2.5-15.el7.x86_64                                                                                                           11/27
+  Verifying  : libsepol-2.5-10.el7.x86_64                                                                                                                    12/27
+  Verifying  : libuutil1-0.8.4-1.el7.x86_64                                                                                                                  13/27
+  Verifying  : zfs-0.8.4-1.el7.x86_64                                                                                                                        14/27
+  Verifying  : libnvpair1-0.8.4-1.el7.x86_64                                                                                                                 15/27
+  Verifying  : selinux-policy-targeted-3.13.1-266.el7_8.1.noarch                                                                                             16/27
+  Verifying  : libzpool2-0.8.4-1.el7.x86_64                                                                                                                  17/27
+  Verifying  : linux-firmware-20191203-76.gite8a0f4c.el7.noarch                                                                                              18/27
+  Verifying  : libsemanage-2.5-11.el7.x86_64                                                                                                                 19/27
+  Verifying  : libselinux-python-2.5-12.el7.x86_64                                                                                                           20/27
+  Verifying  : selinux-policy-targeted-3.13.1-192.el7_5.3.noarch                                                                                             21/27
+  Verifying  : policycoreutils-2.5-22.el7.x86_64                                                                                                             22/27
+  Verifying  : linux-firmware-20180220-62.git6d51311.el7.noarch                                                                                              23/27
+  Verifying  : libsepol-2.5-8.1.el7.x86_64                                                                                                                   24/27
+  Verifying  : selinux-policy-3.13.1-192.el7_5.3.noarch                                                                                                      25/27
+  Verifying  : libselinux-2.5-12.el7.x86_64                                                                                                                  26/27
+  Verifying  : libselinux-utils-2.5-12.el7.x86_64                                                                                                            27/27
+
+Installed:
+  kernel.x86_64 0:3.10.0-1127.19.1.el7                                                   zfs.x86_64 0:0.8.4-1.el7
+
+Dependency Installed:
+  kmod-zfs.x86_64 0:0.8.4-1.el7     libnvpair1.x86_64 0:0.8.4-1.el7                            libuutil1.x86_64 0:0.8.4-1.el7    libzfs2.x86_64 0:0.8.4-1.el7
+  libzpool2.x86_64 0:0.8.4-1.el7    lm_sensors-libs.x86_64 0:3.4.0-8.20160601gitf9185e5.el7    sysstat.x86_64 0:10.1.5-19.el7
+
+Updated:
+  selinux-policy-targeted.noarch 0:3.13.1-266.el7_8.1
+
+Dependency Updated:
+  libselinux.x86_64 0:2.5-15.el7                libselinux-python.x86_64 0:2.5-15.el7                libselinux-utils.x86_64 0:2.5-15.el7
+  libsemanage.x86_64 0:2.5-14.el7               libsepol.x86_64 0:2.5-10.el7                         linux-firmware.noarch 0:20191203-76.gite8a0f4c.el7
+  policycoreutils.x86_64 0:2.5-34.el7           selinux-policy.noarch 0:3.13.1-266.el7_8.1
+
+Complete!
+[root@ZFS vagrant]#
+[root@ZFS vagrant]#
+[root@ZFS vagrant]#
+[root@ZFS vagrant]# lsblk
+NAME                    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT                                          
+sda                       8:0    0   40G  0 disk                                                     
+├─sda1                    8:1    0    1M  0 part                                                     
+├─sda2                    8:2    0    1G  0 part /boot                                               
+└─sda3                    8:3    0   39G  0 part                                                     
+  ├─VolGroup00-LogVol00 253:0    0 37.5G  0 lvm  /                                                   
+  └─VolGroup00-LogVol01 253:1    0  1.5G  0 lvm  [SWAP]                                              
+sdb                       8:16   0    1G  0 disk                                                     
+sdc                       8:32   0    1G  0 disk                                                     
+sdd                       8:48   0    1G  0 disk                                                     
+sde                       8:64   0    1G  0 disk                                                     
+[root@ZFS vagrant]# zpool create poolmirror mirror sdb sdc                                           
+The ZFS modules are not loaded.                                                                      
+Try running '/sbin/modprobe zfs' as root to load them.                                               
+[root@ZFS vagrant]# modprobe zfs zpool create poolmirror mirror sdb sdc                              
+modprobe: FATAL: Module zfs not found.                                                               
+[root@ZFS vagrant]# modprobe zpool create poolmirror mirror sdb sdc                                  
+[root@ZFS vagrant]# df -Th                                                                           
+Filesystem                      Type      Size  Used Avail Use% Mounted on                           
+/dev/mapper/VolGroup00-LogVol00 xfs        38G 1022M   37G   3% /                                    
+devtmpfs                        devtmpfs  109M     0  109M   0% /dev                                 
+tmpfs                           tmpfs     118M     0  118M   0% /dev/shm                             
+tmpfs                           tmpfs     118M  4.5M  114M   4% /run                                 
+tmpfs                           tmpfs     118M     0  118M   0% /sys/fs/cgroup                       
+/dev/sda2                       xfs      1014M   88M  927M   9% /boot                                
+tmpfs                           tmpfs      24M     0   24M   0% /run/user/1000                       
+[root@ZFS vagrant]# zfs list                                                                          
+The ZFS modules are not loaded.                                                                       
+Try running '/sbin/modprobe zfs' as root to load them.                                                
+[root@ZFS vagrant]# modprobe zfs list                                                                 
+modprobe: FATAL: Module zfs not found.                                                                
+[root@ZFS vagrant]# modprobe list                                                                     
+modprobe: FATAL: Module list not found.                                                               
+[root@ZFS vagrant]# modprobe zfs list                                                                 
+modprobe: FATAL: Module zfs not found.                                                                
+[root@ZFS vagrant]# modprobe zfs                                                                      
+modprobe: FATAL: Module zfs not found.                                                                
+[root@ZFS vagrant]# /sbin/modprobe zfs
+     
+Script started on Mon 14 Sep 2020 02:49:50 PM UTC                                                                                                                 
+[vagrant@ZFS ~]$ sudo su                                                                               
+[root@ZFS vagrant]# zpool status                                                                       
+The ZFS modules are not loaded.                                                                        
+Try running '/sbin/modprobe zfs' as root to load them.                                                 
+[root@ZFS vagrant]# /sbin/modprobe zfs                                                                 
+[root@ZFS vagrant]# zpool status                                                                       
+no pools available                                                                                     
+[root@ZFS vagrant]# zpool create poolmirror mirror sdb sdc                                             
+[root@ZFS vagrant]# zpool status                                                                       
+  pool: poolmirror                                                                                     
+ state: ONLINE                                                                                         
+  scan: none requested                                                                                 
+config:                                                                                                
+                                                                                                       
+        NAME        STATE     READ WRITE CKSUM                                                         
+        poolmirror  ONLINE       0     0     0                                                         
+          mirror-0  ONLINE       0     0     0                                                         
+            sdb     ONLINE       0     0     0                                                         
+            sdc     ONLINE       0     0     0                                                         
+                                                                                                       
+errors: No known data errors                                                                           
+[root@ZFS vagrant]# zfs create poolmirror/dir1                                                         
+[root@ZFS vagrant]# zfs create poolmirror/dir2                                                         
+[root@ZFS vagrant]# zfs create poolmirror/dir3                                                         
+[root@ZFS vagrant]# zfs create poolmirror/dir4                                                         
+[root@ZFS vagrant]# zpool status                                                                       
+  pool: poolmirror                                                                                     
+ state: ONLINE                                                                                         
+  scan: none requested                                                                                 
+config:                                                                                                
+                                                                                                       
+        NAME        STATE     READ WRITE CKSUM                                                         
+        poolmirror  ONLINE       0     0     0                                                         
+          mirror-0  ONLINE       0     0     0                                                         
+            sdb     ONLINE       0     0     0                                                         
+            sdc     ONLINE       0     0     0                                                         
+                                                                                                       
+errors: No known data errors                                                                           
+[root@ZFS vagrant]# ls -la /poolmirror/                                                                
+total 3                                                                                                
+drwxr-xr-x.  6 root root   6 Sep 14 15:46 .                                                            
+dr-xr-xr-x. 19 root root 257 Sep 14 14:51 ..                                                           
+drwxr-xr-x.  2 root root   2 Sep 14 15:46 dir1                                                         
+drwxr-xr-x.  2 root root   2 Sep 14 15:46 dir2                                                         
+drwxr-xr-x.  2 root root   2 Sep 14 15:46 dir3                                                         
+drwxr-xr-x.  2 root root   2 Sep 14 15:46 dir4                                                         
+[root@ZFS vagrant]# zfs list                                                                           
+NAME              USED  AVAIL     REFER  MOUNTPOINT                                                    
+poolmirror        206K   832M       28K  /poolmirror                                                   
+poolmirror/dir1    24K   832M       24K  /poolmirror/dir1                                              
+poolmirror/dir2    24K   832M       24K  /poolmirror/dir2                                              
+poolmirror/dir3    24K   832M       24K  /poolmirror/dir3                                              
+poolmirror/dir4    24K   832M       24K  /poolmirror/dir4                                              
+[root@ZFS vagrant]# zfs set compression=gzip /poolmirror/dir1                                          
+cannot open '/poolmirror/dir1': leading slash in name  
+[root@ZFS vagrant]# zfs set compression=gzip poolmirror/dir1                                                                                                                         
+[root@ZFS vagrant]# zfs set compression=zle poolmirror/dir2                                                                                                                                                    
+[root@ZFS vagrant]# zfs set compression=lzjb poolmirror/dir3                                                                                                              
+[root@ZFS vagrant]# zfs set compression=lz4 poolmirror/dir4                                                                                                               
+[root@ZFS vagrant]# zfs list                                                                                                                                              
+NAME              USED  AVAIL     REFER  MOUNTPOINT                                                                                                                       
+poolmirror        217K   832M       28K  /poolmirror                                                                                                                      
+poolmirror/dir1    24K   832M       24K  /poolmirror/dir1                                                                                                                 
+poolmirror/dir2    24K   832M       24K  /poolmirror/dir2                                                                                                                 
+poolmirror/dir3    24K   832M       24K  /poolmirror/dir3                                                                                                                 
+poolmirror/dir4    24K   832M       24K  /poolmirror/dir4                                                                                                                 
+[root@ZFS vagrant]# zfs get compression poolmirror/dir4                                                                                                                   
+NAME             PROPERTY     VALUE     SOURCE                                                                                                                            
+poolmirror/dir4  compression  lz4       local                                                                                                                             
+[root@ZFS vagrant]# zfs get compression poolmirror                                                                                                                        
+NAME        PROPERTY     VALUE     SOURCE                                                                                                                                 
+poolmirror  compression  off       default                                                                                                                                
+[root@ZFS vagrant]# zfs get compression poolmirror/dir1                                                                                                                   
+NAME             PROPERTY     VALUE     SOURCE                                                                                                                            
+poolmirror/dir1  compression  gzip      local                                                                                                                             
+[root@ZFS vagrant]# zfs get compression poolmirror/dir2                                                                                                                   
+NAME             PROPERTY     VALUE     SOURCE                                                                                                                            
+poolmirror/dir2  compression  zle       local                                                                                                                             
+[root@ZFS vagrant]# zfs get compression poolmirror/dir3                                                                                                                   
+NAME             PROPERTY     VALUE     SOURCE                                                                                                                            
+poolmirror/dir3  compression  lzjb      local                                                                                                                             
+[root@ZFS vagrant]# cd /poolmirror/dir1                                                                                                                                   
+[root@ZFS dir1]# wget -O War_and_Peace.txt http://www.gutenberg.org/ebooks/2600.txt.utf-8                                                                                 
+bash: wget: command not found                                                                                                                                             
+[root@ZFS dir1]# yum install wget -y                                                                                                                                      
+Loaded plugins: fastestmirror                                                                                                                                             
+Loading mirror speeds from cached hostfile                                                                                                                                
+ * base: mirror.reconn.ru                                                                                                                                                 
+ * extras: mirror.truenetwork.ru                                                                                                                                          
+ * updates: mirror.reconn.ru                                                                                                                                              
+base                                                                                                                                        | 3.6 kB  00:00:00            
+extras                                                                                                                                      | 2.9 kB  00:00:00            
+updates                                                                                                                                     | 2.9 kB  00:00:00            
+Resolving Dependencies                                                                                                                                                    
+--> Running transaction check                                                                                                                                             
+---> Package wget.x86_64 0:1.14-18.el7_6.1 will be installed                                                                                                              
+--> Finished Dependency Resolution                                                                                                                                        
+                                                                                                                                                                          
+Dependencies Resolved                                                                                                                                                     
+                                                                                                                                                                          
+===================================================================================================================================================================       
+ Package                            Arch                                 Version                                          Repository                          Size        
+===================================================================================================================================================================       
+Installing:                                                                                                                                                               
+ wget                               x86_64                               1.14-18.el7_6.1                                  base                               547 k        
+                                                                                                                                                                          
+Transaction Summary                                                                                                                                                       
+===================================================================================================================================================================       
+Install  1 Package                                                                                                                                                        
+                                                                                                                                                                          
+Total download size: 547 k                                                                                                                                                
+Installed size: 2.0 M                                                                                                                                                     
+Downloading packages:                                                                                                                                                     
+wget-1.14-18.el7_6.1.x86_64.rpm                                    39% [=====================                                    ]  81 kB/s | 196 kB  00:00:04 ETA        
+wget-1.14-18.el7_6.1.x86_64.rpm                                                                                                             | 547 kB  00:00:03            
+Running transaction check                                                                                                                                                 
+Running transaction test                                                                                                                                                  
+Transaction test succeeded                                                                                                                                                
+Running transaction                                                                                                                                                       
+  Installing : wget-1.14-18.el7_6.1.x86_64 [##################                                                                                               ] 1/1  
+  Installing : wget-1.14-18.el7_6.1.x86_64 [##################                                                                                               ] 1/1                
+  Installing : wget-1.14-18.el7_6.1.x86_64 [###########################                                                                                      ] 1/1              
+  Installing : wget-1.14-18.el7_6.1.x86_64 [########################################                                                                         ] 1/1              
+  Installing : wget-1.14-18.el7_6.1.x86_64 [##################################################                                                               ] 1/1              
+  Installing : wget-1.14-18.el7_6.1.x86_64 [###############################################################                                                  ] 1/1              
+  Installing : wget-1.14-18.el7_6.1.x86_64 [###############################################################################                                  ] 1/1              
+  Installing : wget-1.14-18.el7_6.1.x86_64 [############################################################################################                     ] 1/1              
+  Installing : wget-1.14-18.el7_6.1.x86_64 [##########################################################################################################       ] 1/1              
+  Installing : wget-1.14-18.el7_6.1.x86_64                                                                                                                     1/1              
+  Verifying  : wget-1.14-18.el7_6.1.x86_64                                                                                                                     1/1              
+                                                                                                                                                                                
+Installed:                                                                                                                                                                      
+  wget.x86_64 0:1.14-18.el7_6.1                                                                                                                                                 
+                                                                                                                                                                                
+Complete!                                                                                                                                                                       
+[root@ZFS dir1]# wget -O War_and_Peace.txt http://www.gutenberg.org/ebooks/2600.txt.utf-8                                                                                       
+--2020-09-14 15:58:02--  http://www.gutenberg.org/ebooks/2600.txt.utf-8                                                                                                         
+Resolving www.gutenberg.org (www.gutenberg.org)... 152.19.134.47, 2610:28:3090:3000:0:bad:cafe:47                                                                               
+Connecting to www.gutenberg.org (www.gutenberg.org)|152.19.134.47|:80... connected.                                                                                             
+HTTP request sent, awaiting response... 302 Found                                                                                                                               
+Location: http://www.gutenberg.org/cache/epub/2600/pg2600.txt [following]                                                                                                       
+--2020-09-14 15:58:04--  http://www.gutenberg.org/cache/epub/2600/pg2600.txt                                                                                                    
+Reusing existing connection to www.gutenberg.org:80.                                                                                                                            
+HTTP request sent, awaiting response... 200 OK                                                                                                                                  
+Length: 1209374 (1.2M) [text/plain]                                                                                                                                             
+Saving to: ‘War_and_Peace.txt’                                                                                                                                                  
+                                                                                                                                                                                
+14% [=================>                                                                                                        ] 118,116      113KB/s                           
+43% [=============================================>                                                                            ] 459,732      189KB/s                           
+72% [=======================================================================================>                                  ] 878,004      234KB/s  eta 3s                   
+100%[=========================================================================================================================>] 1,209,374    313KB/s   in 4.4s                 
+                                                                                                                                                                                
+2020-09-14 15:58:09 (266 KB/s) - ‘War_and_Peace.txt’ saved [1209374/1209374]                                                                                                    
+                                                                                                                                                                                
+[root@ZFS dir1]# ls -la                                                                                                                                                         
+total 1185                                                                                                                                                                      
+drwxr-xr-x. 2 root root       3 Sep 14 15:58 .                                                                                                                                  
+drwxr-xr-x. 6 root root       6 Sep 14 15:46 ..                                                                                                                                 
+-rw-r--r--. 1 root root 1209374 May  6  2016 War_and_Peace.txt                                                                                                                  
+[root@ZFS dir1]# cp War_and_Peace.txt /poolmirror/dir2/War_and_Peace.txt                                                                                                        
+[root@ZFS dir1]# cp War_and_Peace.txt /poolmirror/dir3/War_and_Peace.txt                                                                                                        
+[root@ZFS dir1]# cp War_and_Peace.txt /poolmirror/dir4/War_and_Peace.txt                                                                                                        
+[root@ZFS dir1]# zfs list                                                                                                                                                       
+NAME              USED  AVAIL     REFER  MOUNTPOINT                                                                                                                             
+poolmirror       4.86M   827M       28K  /poolmirror                                                                                                                            
+poolmirror/dir1  1.18M   827M     1.18M  /poolmirror/dir1                                                                                                                       
+poolmirror/dir2  1.18M   827M     1.18M  /poolmirror/dir2                                                                                                                       
+poolmirror/dir3  1.19M   827M     1.19M  /poolmirror/dir3                                                                                                                       
+poolmirror/dir4  1.18M   827M     1.18M  /poolmirror/dir4                                                                                                                       
+[root@ZFS dir1]# zfs get compression,compressratio                                                                                                                              
+NAME             PROPERTY       VALUE     SOURCE                                                                                                                                
+poolmirror       compression    off       default                                                                                                                               
+poolmirror       compressratio  1.08x     -                                                                                                                                     
+poolmirror/dir1  compression    gzip      local                                                                                                                                 
+poolmirror/dir1  compressratio  1.08x     -                                                                                                                                     
+poolmirror/dir2  compression    zle       local                                                                                                                                 
+poolmirror/dir2  compressratio  1.08x     -                                                                                                                                     
+poolmirror/dir3  compression    lzjb      local                                                                                                                                 
+poolmirror/dir3  compressratio  1.07x     -                                                                                                                                     
+poolmirror/dir4  compression    lz4       local                                                                                                                                 
+poolmirror/dir4  compressratio  1.08x     -                                                                                                                                     
+Script started on Mon 14 Sep 2020 05:05:29 PM UTC                                                   
+[vagrant@ZFS ~]$ tar -C "import" -xvf zfs_task1.tar.gz                                              
+zpoolexport/                                                                                        
+zpoolexport/filea                                                                                   
+zpoolexport/fileb                                                                                   
+[vagrant@ZFS ~]$ ls -la import/                                                                     
+total 0                                                                                             
+drwxrwxr-x. 3 vagrant vagrant  25 Sep 14 17:06 .                                                    
+drwx------. 4 vagrant vagrant 133 Sep 14 17:05 ..                                                   
+drwxr-xr-x. 2 vagrant vagrant  32 May 15 04:35 zpoolexport                                          
+[vagrant@ZFS ~]$ ls -la import/zpoolexport/                                                         
+total 1024000                                                                                       
+drwxr-xr-x. 2 vagrant vagrant        32 May 15 04:35 .                                              
+drwxrwxr-x. 3 vagrant vagrant        25 Sep 14 17:06 ..                                             
+-rw-r--r--. 1 vagrant vagrant 524288000 May 15 05:00 filea                                          
+-rw-r--r--. 1 vagrant vagrant 524288000 May 15 05:00 fileb                                          
+[vagrant@ZFS ~]$ sudo su                                                                            
+[root@ZFS vagrant]# pwd                                                                             
+/home/vagrant                                                                                       
+[root@ZFS vagrant]# zpool import -d ${PWD}/zpoolexport/                                             
+no pools available to import                                                                        
+[root@ZFS vagrant]# zpool import -d ${PWD}/zpoolexport/filea                                        
+no pools available to import                                                                        
+[root@ZFS vagrant]# zpool import -d ${PWD}/import/zpoolexport                                       
+   pool: otus                                                                                       
+     id: 6554193320433390805                                                                        
+  state: ONLINE                                                                                     
+ action: The pool can be imported using its name or numeric identifier.                             
+ config:                                                                                            
+                                                                                                    
+        otus                                        ONLINE                                          
+          mirror-0                                  ONLINE                                          
+            /home/vagrant/import/zpoolexport/filea  ONLINE                                          
+            /home/vagrant/import/zpoolexport/fileb  ONLINE                                          
+[root@ZFS vagrant]# zpool status                                                                    
+  pool: poolmirror                                                                                  
+ state: ONLINE                                                                                      
+  scan: none requested                                                                              
+config:                                                                                             
+                                                                                                    
+        NAME        STATE     READ WRITE CKSUM                                                      
+        poolmirror  ONLINE       0     0     0                                                      
+          mirror-0  ONLINE       0     0     0                                                      
+            sdb     ONLINE       0     0     0                                                      
+            sdc     ONLINE       0     0     0                                                      
+                                                                                                    
+errors: No known data errors                                                                        
+[root@ZFS vagrant]# zfs list                                                                        
+NAME              USED  AVAIL     REFER  MOUNTPOINT                                                 
+poolmirror       9.51M   822M       28K  /poolmirror                                                
+poolmirror/dir1  2.34M   822M     2.34M  /poolmirror/dir1                                           
+poolmirror/dir2  2.34M   822M     2.34M  /poolmirror/dir2                                           
+poolmirror/dir3  2.35M   822M     2.35M  /poolmirror/dir3                                           
+poolmirror/dir4  2.34M   822M     2.34M  /poolmirror/dir4                                           
+[root@ZFS vagrant]# ls -la /                                                                        
+total 17                                                                                            
+dr-xr-xr-x.  19 root    root     257 Sep 14 14:51 .                                                 
+dr-xr-xr-x.  19 root    root     257 Sep 14 14:51 ..                                                
+lrwxrwxrwx.   1 root    root       7 May 12  2018 bin -> usr/bin                                    
+dr-xr-xr-x.   5 root    root    4096 Sep 14 07:31 boot                                              
+drwxr-xr-x.  18 root    root    3220 Sep 14 16:51 dev                                               
+drwxr-xr-x.  80 root    root    8192 Sep 14 16:51 etc                                               
+drwxr-xr-x.   3 root    root      21 May 12  2018 home                                              
+lrwxrwxrwx.   1 root    root       7 May 12  2018 lib -> usr/lib                                    
+lrwxrwxrwx.   1 root    root       9 May 12  2018 lib64 -> usr/lib64                                
+drwxr-xr-x.   2 root    root       6 Apr 11  2018 media                                   
+drwxr-xr-x.   2 root    root       6 Apr 11  2018 mnt                                     
+drwxr-xr-x.   2 root    root       6 Apr 11  2018 opt                                     
+drwxr-xr-x.   6 root    root       6 Sep 14 15:46 poolmirror                              
+dr-xr-xr-x. 238 root    root       0 Sep 14 16:51 proc                                    
+dr-xr-x---.   4 root    root     184 Sep 12 18:07 root                                    
+drwxr-xr-x.  26 root    root     880 Sep 14 16:51 run                                     
+lrwxrwxrwx.   1 root    root       8 May 12  2018 sbin -> usr/sbin                        
+drwxr-xr-x.   2 root    root       6 Apr 11  2018 srv                                     
+dr-xr-xr-x.  13 root    root       0 Sep 14 16:51 sys                                     
+drwxrwxrwt.   8 root    root     260 Sep 14 17:06 tmp                                     
+drwxr-xr-x.  13 root    root     155 May 12  2018 usr                                     
+drwxr-xr-x.   2 vagrant vagrant   49 Sep 14 16:42 vagrant                                 
+drwxr-xr-x.  18 root    root     254 Sep 11 04:12 var                                     
+[root@ZFS vagrant]# zpool list                                                            
+NAME         SIZE  ALLOC   FREE  CKPOINT  EXPANDSZ   FRAG    CAP  DEDUP    HEALTH  ALTROOT
+poolmirror   960M  9.58M   950M        -         -     0%     0%  1.00x    ONLINE  -      
+[root@ZFS vagrant]# zpool import -d ${PWD}/import/zpoolexport/ otus                       
+[root@ZFS vagrant]# zpool list                                                            
+NAME         SIZE  ALLOC   FREE  CKPOINT  EXPANDSZ   FRAG    CAP  DEDUP    HEALTH  ALTROOT
+otus         480M  2.21M   478M        -         -     0%     0%  1.00x    ONLINE  -      
+poolmirror   960M  9.58M   950M        -         -     0%     0%  1.00x    ONLINE  -      
+[root@ZFS vagrant]# zfs list                                                              
+NAME              USED  AVAIL     REFER  MOUNTPOINT                                       
+otus             2.04M   350M       24K  /otus                                            
+otus/hometask2   1.88M   350M     1.88M  /otus/hometask2                                  
+poolmirror       9.51M   822M       28K  /poolmirror                                      
+poolmirror/dir1  2.34M   822M     2.34M  /poolmirror/dir1                                 
+poolmirror/dir2  2.34M   822M     2.34M  /poolmirror/dir2                                 
+poolmirror/dir3  2.35M   822M     2.35M  /poolmirror/dir3                                 
+poolmirror/dir4  2.34M   822M     2.34M  /poolmirror/dir4                                 
+[root@ZFS vagrant]# ls -la /otus/hometask2/                                               
+total 253                                                                                 
+drwxr-xr-x. 102 root root 102 May 15 04:29 .                                              
+drwxr-xr-x.   3 root root   3 May 15 04:18 ..                                             
+drwxr-xr-x. 102 root root 102 May 15 04:29 dir1                                           
+drwxr-xr-x. 102 root root 102 May 15 04:29 dir10                                          
+drwxr-xr-x. 102 root root 102 May 15 04:29 dir100                                         
+drwxr-xr-x. 102 root root 102 May 15 04:29 dir11                                          
+drwxr-xr-x. 102 root root 102 May 15 04:29 dir12                                          
+drwxr-xr-x. 102 root root 102 May 15 04:29 dir13                                          
+drwxr-xr-x. 102 root root 102 May 15 04:29 dir14                                          
+drwxr-xr-x. 102 root root 102 May 15 04:29 dir15                                          
+drwxr-xr-x. 102 root root 102 May 15 04:29 dir16                                          
+drwxr-xr-x. 102 root root 102 May 15 04:29 dir17                                          
+drwxr-xr-x. 102 root root 102 May 15 04:29 dir18                                          
+drwxr-xr-x. 102 root root 102 May 15 04:29 dir19                                          
+drwxr-xr-x. 102 root root 102 May 15 04:29 dir2                                           
+drwxr-xr-x. 102 root root 102 May 15 04:29 dir20                                          
+drwxr-xr-x. 102 root root 102 May 15 04:29 dir21                                          
+drwxr-xr-x. 102 root root 102 May 15 04:29 dir22                                          
+drwxr-xr-x. 102 root root 102 May 15 04:29 dir23                                          
+drwxr-xr-x. 102 root root 102 May 15 04:29 dir24                                          
+drwxr-xr-x. 102 root root 102 May 15 04:29 dir25                                          
+drwxr-xr-x. 102 root root 102 May 15 04:29 dir26                                          
+drwxr-xr-x. 102 root root 102 May 15 04:29 dir27                                          
+drwxr-xr-x. 102 root root 102 May 15 04:29 dir28                                          
+drwxr-xr-x. 102 root root 102 May 15 04:29 dir29                                          
+drwxr-xr-x. 102 root root 102 May 15 04:29 dir3                                           
+drwxr-xr-x. 102 root root 102 May 15 04:29 dir30                                          
+drwxr-xr-x. 102 root root 102 May 15 04:29 dir31                                          
+drwxr-xr-x. 102 root root 102 May 15 04:29 dir32                                          
+drwxr-xr-x. 102 root root 102 May 15 04:29 dir33                                          
+drwxr-xr-x. 102 root root 102 May 15 04:29 dir34                                          
+drwxr-xr-x. 102 root root 102 May 15 04:29 dir35
+#******************************************************************************
+#******************************************************************************
+#******************************************************************************
+drwxr-xr-x.   2 root root   2 May 15 04:29 dir99
+[root@ZFS vagrant]# ls -la /otus/hometask2/dir99/dir9
+dir91/  dir910/ dir92/  dir93/  dir94/  dir95/  dir96/  dir97/  dir98/  dir99/
+[root@ZFS vagrant]# ls -la /otus/hometask2/dir99/dir99/
+total 3
+drwxr-xr-x.   2 root root   2 May 15 04:29 .
+drwxr-xr-x. 102 root root 102 May 15 04:29 ..
+[root@ZFS vagrant]# zfs get recordsize
+NAME             PROPERTY    VALUE    SOURCE
+otus             recordsize  128K     local
+otus/hometask2   recordsize  128K     inherited from otus
+poolmirror       recordsize  128K     default
+poolmirror/dir1  recordsize  128K     default
+poolmirror/dir2  recordsize  128K     default
+poolmirror/dir3  recordsize  128K     default
+poolmirror/dir4  recordsize  128K     default
+[root@ZFS vagrant]# zfs get recordsize otus
+NAME  PROPERTY    VALUE    SOURCE
+otus  recordsize  128K     local
+[root@ZFS vagrant]# zfs get recordsize otus/hometask2
+NAME            PROPERTY    VALUE    SOURCE
+otus/hometask2  recordsize  128K     inherited from otus
+[root@ZFS vagrant]$ zfs get compression,compressratio  otus
+NAME  PROPERTY       VALUE     SOURCE
+otus  compression    zle       local
+otus  compressratio  1.23x     -
+[vagrant@ZFS ~]$ zfs get checksum
+NAME                  PROPERTY  VALUE      SOURCE
+otus                  checksum  sha256     local
+otus/hometask2        checksum  sha256     inherited from otus
+otus/hometask3        checksum  sha256     inherited from otus
+otus/hometask3@task2  checksum  -          -
+poolmirror            checksum  on         default
+poolmirror/dir1       checksum  on         default
+poolmirror/dir2       checksum  on         default
+poolmirror/dir3       checksum  on         default
+poolmirror/dir4       checksum  on         default
+[root@ZFS vagrant]# zpool status                                                                                                 
+  pool: otus                                                                           
+ state: ONLINE                                                                         
+  scan: none requested                                                                 
+config:                                                                                
+                                                                                       
+        NAME                                        STATE     READ WRITE CKSUM         
+        otus                                        ONLINE       0     0     0         
+          mirror-0                                  ONLINE       0     0     0         
+            /home/vagrant/import/zpoolexport/filea  ONLINE       0     0     0         
+            /home/vagrant/import/zpoolexport/fileb  ONLINE       0     0     0         
+                                                                                       
+errors: No known data errors                                                           
+                                                                                       
+  pool: poolmirror                                                                     
+ state: ONLINE                                                                         
+  scan: none requested                                                                 
+config:                                                                                
+                                                                                       
+        NAME        STATE     READ WRITE CKSUM                                         
+        poolmirror  ONLINE       0     0     0                                         
+          mirror-0  ONLINE       0     0     0                                         
+            sdb     ONLINE       0     0     0                                         
+            sdc     ONLINE       0     0     0                                         
+                                                                                       
+errors: No known data errors                                                           
+[root@ZFS vagrant]# zpool get all                                                      
+NAME        PROPERTY                       VALUE                          SOURCE       
+otus        size                           480M                           -            
+otus        capacity                       0%                             -            
+otus        altroot                        -                              default      
+otus        health                         ONLINE                         -            
+otus        guid                           6554193320433390805            -            
+otus        version                        -                              default      
+otus        bootfs                         -                              default      
+otus        delegation                     on                             default      
+otus        autoreplace                    off                            default      
+otus        cachefile                      -                              default      
+otus        failmode                       wait                           default      
+otus        listsnapshots                  off                            default      
+otus        autoexpand                     off                            default      
+otus        dedupditto                     0                              default      
+otus        dedupratio                     1.00x                          -            
+otus        free                           478M                           -            
+otus        allocated                      2.09M                          -
+otus        readonly                       off                            -
+otus        ashift                         0                              default
+otus        comment                        -                              default
+otus        expandsize                     -                              -
+otus        freeing                        0                              -
+otus        fragmentation                  0%                             -
+otus        leaked                         0                              -
+otus        multihost                      off                            default
+otus        checkpoint                     -                              -
+otus        load_guid                      17742633872717176843           -
+otus        autotrim                       off                            default
+otus        feature@async_destroy          enabled                        local
+otus        feature@empty_bpobj            active                         local
+otus        feature@lz4_compress           active                         local
+otus        feature@multi_vdev_crash_dump  enabled                        local
+otus        feature@spacemap_histogram     active                         local
+otus        feature@enabled_txg            active                         local
+otus        feature@hole_birth             active                         local
+otus        feature@extensible_dataset     active                         local
+otus        feature@embedded_data          active                         local
+otus        feature@bookmarks              enabled                        local
+otus        feature@filesystem_limits      enabled                        local
+otus        feature@large_blocks           enabled                        local
+otus        feature@large_dnode            enabled                        local
+otus        feature@sha512                 enabled                        local
+otus        feature@skein                  enabled                        local
+otus        feature@edonr                  enabled                        local
+otus        feature@userobj_accounting     active                         local
+otus        feature@encryption             enabled                        local
+otus        feature@project_quota          active                         local
+otus        feature@device_removal         enabled                        local
+otus        feature@obsolete_counts        enabled                        local
+otus        feature@zpool_checkpoint       enabled                        local
+otus        feature@spacemap_v2            active                         local
+otus        feature@allocation_classes     enabled                        local
+otus        feature@resilver_defer         enabled                        local
+otus        feature@bookmark_v2            enabled                        local
+poolmirror  size                           960M                           -
+poolmirror  capacity                       0%                             -
+poolmirror  altroot                        -                              default
+poolmirror  health                         ONLINE                         -
+poolmirror  guid                           12176718222590355813           -
+poolmirror  version                        -                              default
+poolmirror  bootfs                         -                              default
+poolmirror  delegation                     on                             default
+poolmirror  autoreplace                    off                            default
+poolmirror  cachefile                      -                              default
+poolmirror  failmode                       wait                           default
+poolmirror  listsnapshots                  off                            default
+poolmirror  autoexpand                     off                            default
+poolmirror  dedupditto                     0                              default
+poolmirror  dedupratio                     1.00x                          -
+poolmirror  free                           950M                           -
+poolmirror  allocated                      9.58M                          -
+poolmirror  readonly                       off                            -
+poolmirror  ashift                         0                              default
+poolmirror  comment                        -                              default
+poolmirror  expandsize                     -                              -
+poolmirror  freeing                        0                              -
+poolmirror  fragmentation                  0%                             -
+poolmirror  leaked                         0                              -
+poolmirror  multihost                      off                            default
+poolmirror  checkpoint                     -                              -
+poolmirror  load_guid                      4894906285168275227            -
+poolmirror  autotrim                       off                            default
+poolmirror  feature@async_destroy          enabled                        local
+poolmirror  feature@empty_bpobj            active                         local
+poolmirror  feature@lz4_compress           active                         local
+poolmirror  feature@multi_vdev_crash_dump  enabled                        local
+poolmirror  feature@spacemap_histogram     active                         local
+poolmirror  feature@enabled_txg            active                         local
+poolmirror  feature@hole_birth             active                         local
+poolmirror  feature@extensible_dataset     active                         local
+poolmirror  feature@embedded_data          active                         local
+poolmirror  feature@bookmarks              enabled                        local
+poolmirror  feature@filesystem_limits      enabled                        local
+poolmirror  feature@large_blocks           enabled                        local
+poolmirror  feature@large_dnode            enabled                        local
+poolmirror  feature@sha512                 enabled                        local
+poolmirror  feature@skein                  enabled                        local
+poolmirror  feature@edonr                  enabled                        local
+poolmirror  feature@userobj_accounting     active                         local
+poolmirror  feature@encryption             enabled                        local
+poolmirror  feature@project_quota          active                         local
+poolmirror  feature@device_removal         enabled                        local
+poolmirror  feature@obsolete_counts        enabled                        local
+poolmirror  feature@zpool_checkpoint       enabled                        local
+poolmirror  feature@spacemap_v2            active                         local
+poolmirror  feature@allocation_classes     enabled                        local
+poolmirror  feature@resilver_defer         enabled                        local
+poolmirror  feature@bookmark_v2            enabled                        local
+
+Script started on Tue 15 Sep 2020 01:10:58 PM UTC                                   
+[vagrant@ZFS ~]$ sudo su                                                            
+[root@ZFS vagrant]# ls -la                                                          
+total 12432                                                                         
+drwx------. 4 vagrant vagrant     156 Sep 15 13:10 .                                
+drwxr-xr-x. 3 root    root         21 May 12  2018 ..                               
+-rw-------. 1 vagrant vagrant     367 Sep 15 13:10 .bash_history                    
+-rw-r--r--. 1 vagrant vagrant      18 Apr 11  2018 .bash_logout                     
+-rw-r--r--. 1 vagrant vagrant     193 Apr 11  2018 .bash_profile                    
+-rw-r--r--. 1 vagrant vagrant     231 Apr 11  2018 .bashrc                          
+drwxrwxr-x. 3 vagrant vagrant      25 Sep 14 17:06 import                           
+-rw-rw-r--. 1 vagrant vagrant 5432736 Sep 15 13:10 otus_task2.file                  
+drwx------. 2 vagrant vagrant      29 Sep 11 04:13 .ssh                             
+-rw-rw-r--. 1 vagrant vagrant 7275140 Sep 14 16:54 zfs_task1.tar.gz                 
+[root@ZFS vagrant]# zfs receive otus/storage/task2 < otus_task2.file                
+cannot open 'otus/storage': dataset does not exist                                  
+cannot receive new filesystem stream: unable to restore to destination              
+[root@ZFS vagrant]# zfs list                                                        
+NAME              USED  AVAIL     REFER  MOUNTPOINT                                 
+otus             2.05M   350M       24K  /otus                                      
+otus/hometask2   1.88M   350M     1.88M  /otus/hometask2                            
+poolmirror       9.51M   822M       28K  /poolmirror                                
+poolmirror/dir1  2.34M   822M     2.34M  /poolmirror/dir1                           
+poolmirror/dir2  2.34M   822M     2.34M  /poolmirror/dir2                           
+poolmirror/dir3  2.35M   822M     2.35M  /poolmirror/dir3                           
+poolmirror/dir4  2.34M   822M     2.34M  /poolmirror/dir4                           
+[root@ZFS vagrant]# mkdir /otus/hometask3                                           
+[root@ZFS vagrant]# zfs receive otus/hometask3 < otus_task2.file                    
+[root@ZFS vagrant]# ls -la /otus/hometask3                                          
+total 2592                                                                          
+drwxr-xr-x. 3 root    root         11 May 15 07:08 .                                
+drwxr-xr-x. 4 root    root          4 Sep 15 13:17 ..                               
+-rw-r--r--. 1 root    root          0 May 15 06:46 10M.file                         
+-rw-r--r--. 1 root    root     727040 May 15 07:08 cinderella.tar                   
+-rw-r--r--. 1 root    root         65 May 15 06:39 for_examaple.txt                 
+-rw-r--r--. 1 root    root          0 May 15 06:39 homework4.txt                    
+-rw-r--r--. 1 root    root     309987 May 15 06:39 Limbo.txt                        
+-rw-r--r--. 1 root    root     509836 May 15 06:39 Moby_Dick.txt                    
+drwxr-xr-x. 3 vagrant vagrant       4 Dec 18  2017 task1                            
+-rw-r--r--. 1 root    root    1209374 May  6  2016 War_and_Peace.txt                
+-rw-r--r--. 1 root    root     398635 May 15 06:45 world.sql                        
+[root@ZFS vagrant]# find  /otus/hometask3 -type f -name "secret_message"            
+/otus/hometask3/task1/file_mess/secret_message                                      
+[root@ZFS vagrant]# cat /otus/hometask3/task1/file_mess/secret_message              
+https://github.com/sindresorhus/awesome                                             
+[root@ZFS vagrant]# exit                                                            
+exit                                                                                
+[vagrant@ZFS ~]$ exit                                                               
+exit                                                                                
+                                                                                    
+Script done on Tue 15 Sep 2020 01:25:11 PM UTC                                      
