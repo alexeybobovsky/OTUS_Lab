@@ -1,5 +1,5 @@
 # Лабораторная работа №10.  Systemd
-[img1]: https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab10/result.PNG "" 
+[img1]: https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab10/result.png "" 
 
 
 ## Задачи
@@ -10,7 +10,7 @@
 
 
 ## Решение 
-* В репозиторий **GitHUB** добавлен [Vagrant файл](https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab10/Vagrantfile),  который стартует провижн шелл скрипт, который выполняет сразу все задания ( файл ([systemd.sh](https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab10/systemd.sh)) ). Содержимое которого приведено ниже:
+* В репозиторий **GitHUB** добавлен [Vagrant файл](https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab10/Vagrantfile),  который стартует провижн шелл скрипт, который выполняет сразу все задания   ([systemd.sh](https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab10/systemd.sh)). Содержимое файла приведено ниже:
 
 ```
 #!/bin/bash
