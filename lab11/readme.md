@@ -1,8 +1,8 @@
 # Лабораторная работа №11.  Первые шаги с Ansible
-[img1]: https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab11/scr1.png "" 
-[img2]: https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab11/scr2.png "" 
-[img3]: https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab11/scr3.png "" 
-[img4]: https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab11/scr4.png "" 
+[img1]: https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab11/img/scr1.png "" 
+[img2]: https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab11/img/scr2.png "" 
+[img3]: https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab11/img/scr3.png "" 
+[img4]: https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab11/img/scr4.png "" 
 
 
 ## Задачи
