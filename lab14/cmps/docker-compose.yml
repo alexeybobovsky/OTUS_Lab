@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+    nginx:
+        image: fmeat/webnginx:latest
+        container_name: nginx
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - ./nginx/Logs:/var/log/nginx/
+        links:
+            - php
+        networks:
+            - website
+    php:
+        image: fmeat/webphp:latest
+        container_name: php-fpm
+        ports:
+            - "9000:9000"
+        volumes:
+            - ./nginx/www:/var/www
+        networks:
+            - website
+networks:
+    website:
+        name: website
