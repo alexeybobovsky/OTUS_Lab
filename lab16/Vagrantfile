@@ -13,8 +13,6 @@ Vagrant.configure(2) do |config|
     # shared folders
 	#nfss.vm.synced_folder ".", "/vagrant", type: "virtualbox"
 
-#	nfss.vm.provision "file", source: "srv-rsyslogd.pp", destination: "srv-rsyslogd.pp"
-#	nfss.vm.provision "file", source: "srv-inimfile.pp", destination: "srv-inimfile.pp"
 	nfss.vm.provision "file", source: "my-rsyslogd.pp", destination: "my-rsyslogd.pp"
 	nfss.vm.provision "file", source: "my-inimfile.pp", destination: "my-inimfile.pp"
     nfss.vm.network "private_network", ip: "192.168.50.10", virtualbox__intnet: "net1"
@@ -22,8 +20,7 @@ Vagrant.configure(2) do |config|
 	nfss.vm.provision "shell", path: "server.sh"	
     nfss.vm.provision "shell", inline: <<-SHELL
 		echo "***********************************************************************"
-		ls -la my-rsyslogd.pp
-		ls -la my-inimfile.pp	
+		echo "***********Start INLINE script on "$(hostname)
 		echo "***********************************************************************"
 		semodule -i /home/vagrant/my-rsyslogd.pp
 		semodule -i /home/vagrant/my-inimfile.pp
@@ -44,8 +41,7 @@ Vagrant.configure(2) do |config|
     nfsc.vm.provision "shell", path: "client.sh"
 	nfsc.vm.provision "shell", inline: <<-SHELL
 		echo "***********************************************************************"
-		ls -la my-rsyslogd.pp
-		ls -la my-inimfile.pp	
+		echo "***********Start INLINE script on "$(hostname)
 		echo "***********************************************************************"
 		semodule -i /home/vagrant/my-rsyslogd.pp
 		semodule -i /home/vagrant/my-inimfile.pp
