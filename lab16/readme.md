@@ -4,7 +4,7 @@
 [img2]: https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab16/img/scr2.PNG "" 
 [img3]: https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab16/img/scr3.PNG "" 
 
-## Задание: настроить центральный сервер для сбора логов
+## Задание: настроить централизованный сервер для сбора логов
 
 * в вагранте поднимаем 2 машины web (**log-client**) и log (**log-server**)
 * на web поднимаем **NGINX**
