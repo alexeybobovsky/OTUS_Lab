@@ -20,7 +20,7 @@
 * В репозиторий **GitHUB** добавлен [Vagrant файл](https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab16/Vagrantfile),  который  разворачивает требуемый стенд из 2 виртуалок посредством шелл скриптов 
 для web (log-client)  ([client.sh](https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab16/client.sh)) и для и log (log-server) ([server.sh](https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab16/server.sh))
 
-### Описание действий для авто настройки сервера логов 
+### Описание действий для автонастройки сервера логов 
 
 #### В провижне стартует внешний скрипт **server.sh**, выполняющий следующие действия:
 
@@ -66,7 +66,7 @@ semodule -i my-rsyslogd.pp
 semodule -i my-inimfile.pp
 ```	
 
-### Описание действий для авто настройки клиентской машины логов **log-client** (машины web)
+### Описание действий для автонастройки клиентской машины логов **log-client** (машины web)
 
 #### В провижне стартует внешний скрипт **client.sh**, выполняющий следующие действия:
 
