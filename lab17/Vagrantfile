@@ -1,0 +1,56 @@
+# -*- mode: ruby -*-
+# vim: set ft=ruby :
+BRIDGE_NET="192.168.11."
+# Префикс для Internal сети
+INTERNAL_NET="192.168.15."
+# Домен который будем использовать для всей площадки
+DOMAIN="otus.edu"
+
+servers=[
+  {
+    :hostname => "backup-server." + DOMAIN,
+    :ip => BRIDGE_NET + "150",
+    :ip_int => "1",
+    :ram => 1024,
+    :hdd_name => "backup.vdi",
+    :hdd_size => "2048",
+	:shell_file => "server.sh"
+ },
+  {
+    :hostname => "client." + DOMAIN,
+    :ip => BRIDGE_NET + "151",
+    :ip_int => "2",
+    :ram => 512,  
+	:prov_file => "backup.sh",
+	:shell_file => "client.sh"
+	}
+]
+
+Vagrant.configure(2) do |config|
+    servers.each do |machine|
+        config.vm.define machine[:hostname] do |node|
+            node.vm.box = "centos/7"
+            node.vm.usable_port_range = (2200..2250)
+            node.vm.hostname = machine[:hostname]
+			node.vm.network "private_network", ip:machine[:ip]
+            node.vm.provider "virtualbox" do |vb|
+                vb.customize ["modifyvm", :id, "--memory", machine[:ram]]
+                vb.name = machine[:hostname]
+                if (!machine[:hdd_name].nil?)
+                    unless File.exist?(machine[:hdd_name])
+                        vb.customize ['createhd', '--filename', machine[:hdd_name], '--variant', 'Fixed', '--size', machine[:hdd_size]]
+                    end
+					vb.customize ["storagectl", :id, "--name", "SATA", "--add", "sata" ]
+                    vb.customize ['storageattach', :id,  '--storagectl', 'SATA', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', machine[:hdd_name]]
+               end                
+            end
+			if (!machine[:prov_file].nil?)
+				node.vm.provision "file", source: machine[:prov_file], destination: machine[:prov_file]
+			end
+			if (!machine[:shell_file].nil?)
+				node.vm.provision "shell", path: machine[:shell_file]
+			end
+		
+        end
+    end
+end
