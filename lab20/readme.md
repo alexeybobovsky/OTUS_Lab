@@ -1,10 +1,10 @@
 # Лабораторная работа №20. Фильтрация трафика **firewalld**.
 
-[scheme]: https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab20/img/scheme.PNG "" 
+[scheme]: https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab20/img/scheme.png "" 
 [img1]: https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab20/img/scr1.PNG "" 
 [img2]: https://github.com/alexeybobovsky/OTUS_Lab/blob/master/lab20/img/scr2.PNG "" 
 
-## Задание: Настраиваем бэкапы
+## Задание: Настраиваем iptables/firewalld
 
 1) реализовать **knocking port**:  **centralRouter** может попасть на ssh **inetrRouter** через knock скрипт
 2) добавить **inetRouter2**, который виден(маршрутизируется (host-only тип сети для виртуалки)) с хоста или форвардится порт через локалхост
